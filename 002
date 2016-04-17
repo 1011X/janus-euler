@@ -1,0 +1,28 @@
+// Calculates a fibonacci pair using recursion
+procedure fib(int x1, int x2, int n)
+    if n = 0 then
+        x1 += 1
+        x2 += 1
+    else
+        n -= 1
+        call fib(x1, x2, n)
+        x1 += x2
+        x1 <=> x2
+    fi x1 = x2
+
+procedure main()
+	int x1 = 0
+	int x2 = 0
+    
+    int i = 0
+    int sum = 0
+    
+    from i = 0 do
+        call fib(x1, x2, i)
+    loop
+        if x2 % 2 = 0 then
+            sum += x2
+        fi x2 % 2 = 0
+        uncall fib(x1, x2, i)
+        i += 1
+    until x2 > 4000000
