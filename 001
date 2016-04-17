@@ -1,0 +1,12 @@
+// Add all the natural numbers below one thousand that are multiples of 3 or 5.
+
+procedure main()
+	int sum
+	int i
+	
+	from i = 0 loop
+		if i % 3 = 0 || i % 5 = 0 then
+			sum += i
+		fi i % 3 = 0 || i % 5 = 0
+		i += 1
+	until i = 1000
