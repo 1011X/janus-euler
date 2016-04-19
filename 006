@@ -1,0 +1,45 @@
+procedure root(int num, int root)
+    local int bit = 1
+    from bit = 1 loop  // find exponential ball park
+        call doublebit(bit)
+    until (bit * bit) > num
+
+    from (bit * bit) > num do
+        uncall doublebit(bit)
+        if ((root + bit) * (root + bit)) <= num then
+            root += bit
+        fi (root / bit) % 2 != 0
+    until bit = 1
+    delocal int bit = 1
+    num -= root * root
+
+procedure doublebit(int bit)
+    local int z = bit
+    bit += z
+    delocal int z = bit / 2
+
+procedure main()
+    int sum
+    int sum_square
+    int square_sum
+    int difference
+    int i = 1
+    
+    from i = 1 do
+        sum += i
+        i += 1
+    until i = 101
+    
+    uncall root(sum_square, sum)
+    
+    i -= 100
+    from i = 1 do
+        local int result = 0
+        uncall root(result, i)
+        square_sum += result
+        call root(result, i)
+        delocal int result = 0
+        i += 1
+    until i = 101
+    
+    difference += sum_square - square_sum
